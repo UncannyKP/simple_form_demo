@@ -1,0 +1,41 @@
+<%= simple_form_for(post) do |f| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Your name" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <%= f.input :name, label: "Your name", error: "Name is mandatory", placeholder: "Your name goes here", 
+                      input_html: { class: "form_name" }, 
+                      wrapper_html: { class: 'field' } %>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+
+  <%= f.input :description, type: :text, wrapper_html: { class: 'field' } %>
+
+  <div class="field">
+    <%= f.label :active %>
+    <%= f.check_box :active %>
+  </div>
+
+  <%= f.input :active, type: :check_box, inline_label: "Active", wrapper_html: { class: 'field' } %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
